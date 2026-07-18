@@ -1,0 +1,57 @@
+{
+  "case_rules": {
+    "ambiguous": "max mean covariance trace",
+    "ordinary": "seeded random test play",
+    "overconfident": "validation q25 spread and outside nominal 80% marginal region; flag only after calibration audit",
+    "surprising": "max play mean NLL"
+  },
+  "hypotheses": [
+    {
+      "claim": "Causal histories improve fixed-target forecasts over geometry",
+      "comparison": [
+        "geometry versus geometry_static",
+        "temporal versus temporal_static",
+        "temporal versus geometry"
+      ],
+      "id": "H1",
+      "primary_control_note": "Matched static/history ablations supplement original cross-family comparison; temporal-v-geometry compares different architectures and is not a pure history effect."
+    },
+    {
+      "claim": "Edges improve +1s marginal energy score at -0.1s over matched pooled context",
+      "comparison": [
+        "graph",
+        "pooled"
+      ],
+      "id": "H2"
+    },
+    {
+      "claim": "Later observations improve proper scores on the common cohort",
+      "comparison": [
+        -1.0,
+        -0.1
+      ],
+      "id": "H3"
+    },
+    {
+      "claim": "Unfamiliar opponents or formations degrade skill and calibration",
+      "comparison": [
+        "chronological",
+        "opponent_holdout"
+      ],
+      "id": "H4",
+      "interpretation": "Protocols overlap and have different populations/training sizes; differences are descriptive, not a causal shift effect."
+    },
+    {
+      "claim": "Spread, distribution update and realised surprise select different cases",
+      "comparison": [
+        "ambiguity",
+        "belief_change",
+        "surprise"
+      ],
+      "id": "H5",
+      "measurement": "Spearman and top-decile overlap on aligned records; no one-number disguise ranking."
+    }
+  ],
+  "registered": "2026-10-04",
+  "scope": "Frozen empirical league-wide historical NFL 2022 endpoint study; no final scores inspected at registration"
+}
