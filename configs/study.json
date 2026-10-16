@@ -1,0 +1,16 @@
+{
+  "version": "movement-v1",
+  "mode": "synthetic-only-until-M0",
+  "cutoffs": [-1.0, -0.5, -0.1],
+  "history_seconds": 2.0,
+  "anchor_seconds": -1.0,
+  "horizons": [0.5, 1.0],
+  "primary": {"cutoff": -0.1, "horizon": 1.0, "score": "play_mean_marginal_energy_score", "comparison": ["graph", "pooled"]},
+  "target_policy": "exact_horizon_with_1e-6_tolerance; missing_mask; censor_after_ball_dead",
+  "input_policy": "last_observation_at_or_before_cutoff; no_backfill; reject_gaps_over_0.15s",
+  "probability_head": "bivariate_gaussian; marginal; std_floor_0.15_yards",
+  "identity_embeddings": false,
+  "seed": 1729,
+  "budget": {"cloud_usd": 0, "max_trials": 24, "max_epochs": 40, "max_seconds_per_trial": 120, "max_cache_gb": 2, "energy_samples": 64, "bootstrap_games": 1000},
+  "final_nfl_test": "locked_until_access_cohort_rights_and_development_gates"
+}

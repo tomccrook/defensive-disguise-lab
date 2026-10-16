@@ -1,0 +1,10 @@
+{
+  "registered": "2026-10-04",
+  "status": "post_exposure_mechanical_correction; exploratory_comparison",
+  "reason": "Original boosted geometry predicted full anchor-relative targets without the explicit observed last-minus-anchor adjustment used by neural heads. Add the same physical target re-expression as a stronger control.",
+  "changes": "Fit boosted trees to target minus observed cutoff-to-anchor displacement; add that known displacement at inference. Static/history features otherwise unchanged.",
+  "frozen_settings": "Same source/cohort/splits, 250 iterations, 31 leaves, original seeds, covariance estimation, six validation scales, proper scores and game bootstrap.",
+  "variants": ["geometry_residual", "geometry_static_residual"],
+  "trials": 2,
+  "test_policy": "Existing test outcomes were exposed. This is explicitly a post-exposure corrective audit, not an untouched confirmation. Preserve original results; no graph/pooled retraining, test-driven hyperparameters or demo reselection."
+}

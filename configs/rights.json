@@ -1,0 +1,15 @@
+{
+  "dataset": "synthetic-fixtures-public-source-release",
+  "download_verified": false,
+  "public_replay": "synthetic_only",
+  "cloud_transfer": "not_authorized",
+  "local_analysis": "synthetic_fixtures_only; third_party_data_require_separate_rights_review",
+  "derived_outputs": "no_historical_data_outputs_in_this_release",
+  "screenshots": "synthetic_only",
+  "other_sources": {
+    "synthetic_fixtures": {
+      "contains_historical_nfl_records": false,
+      "use": "software_training_evaluation_demo_and_screenshots"
+    }
+  }
+}
