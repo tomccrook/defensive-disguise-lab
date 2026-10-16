@@ -32,3 +32,9 @@ The local frontend production build passed with Node 24.21.0. The GitHub Actions
 | 2026-10-10 | Document model methods and the synthetic data policy |
 
 The source import is consolidated into ten substantive file groups. Subsequent maintenance changes use their actual dates.
+
+## Maintenance fixes — 16 October 2026
+
+Forecast inputs must cover the full two-second causal window required by the feature grid. Truncated histories now receive a clear validation error, including HTTP 422 from the API, before feature construction. All 25 tests passed with a synthetic model fixture; Ruff and mypy passed.
+
+These targeted fixes do not rerun the protected scientific studies or update their recorded numerical findings.

@@ -60,6 +60,8 @@ class ForecastInput(Strict):
                 raise ValueError("history must be ordered, unique and have at least two frames")
             if times[-1] > self.cutoff + 1e-8 or times[0] < self.cutoff - 2 - 1e-8:
                 raise ValueError("history outside permitted causal window")
+            if times[0] > self.cutoff - 2 + 1e-8:
+                raise ValueError("complete two-second history required; no future backfill")
             if self.cutoff - times[-1] > 0.100001:
                 raise ValueError("last observation is stale")
             if any(b - a > 0.150001 for a, b in zip(times, times[1:], strict=False)):

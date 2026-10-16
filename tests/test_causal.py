@@ -1,9 +1,11 @@
 import numpy as np
 import polars as pl
 import pytest
+from fastapi.testclient import TestClient
 from pydantic import ValidationError
 from torch_geometric.data import Batch
 
+from disguise_lab.api import create_app
 from disguise_lab.contracts import ForecastInput
 from disguise_lab.features import build_features, rotate, wrap_angle
 from disguise_lab.fixtures import generate, input_from_rows, reveal_from_rows
@@ -59,6 +61,19 @@ def test_fixed_anchor_target_and_missing_mask(fixture):
     assert reveal_from_rows(rows, early).outcomes == reveal_from_rows(rows, late).outcomes
     censored = rows.filter(~((pl.col("entity_id") == "D01") & (pl.col("t") == 1.0)))
     assert reveal_from_rows(censored, late).outcomes[0].displacement is None
+
+
+def test_truncated_history_is_rejected_before_feature_construction(fixture):
+    _, _, sample = fixture
+    data = sample.model_dump()
+    data["entities"][0]["observations"] = data["entities"][0]["observations"][1:]
+    with pytest.raises(ValidationError, match="complete two-second history"):
+        ForecastInput.model_validate(data)
+    response = TestClient(create_app()).post(
+        "/api/forecast", json={"family": "geometry", "sample": data}
+    )
+    assert response.status_code == 422
+    assert "complete two-second history" in response.text
 
 
 def test_edges_batch_and_storage_permutation(fixture):
