@@ -1,5 +1,7 @@
 # Defensive Disguise Lab
 
+[![Tests](https://github.com/tomccrook/defensive-disguise-lab/actions/workflows/tests.yml/badge.svg)](https://github.com/tomccrook/defensive-disguise-lab/actions/workflows/tests.yml)
+
 **Can pre-snap movement help forecast where defenders will be after the snap?** This workbench compares simple motion rules with temporal and graph models, while keeping future information out of their inputs.
 
 [Interactive synthetic demo](https://tomcrook.dev/demos/defensive-disguise) · [Project study](https://tomcrook.dev/projects/defensive-disguise) · [Methods](docs/methods.md)
